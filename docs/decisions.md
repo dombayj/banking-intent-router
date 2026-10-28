@@ -87,8 +87,10 @@ Decisions are made by Osman; each one records the reason. Experiment results go 
   example buttons (sent to the server, no caching), one-line model note, nothing stored.
   Built `app/main.py`, `app/static/index.html`, `Dockerfile` (CPU torch, non-root),
   `tests/test_app.py` (5 pass). Container: image 2.1 GB, 342 MB RAM, ~23 ms per request
-  over HTTP on the M2 (batch 1). Local git repo initialised, no commit yet (needs Osman's
-  git name/email and `gh auth login`). Azure waits for the GitHub Student Pack approval.
+  over HTTP on the M2 (batch 1). Azure waits for the GitHub Student Pack approval.
+- **2026-10-28 (GitHub):** private repo github.com/dombayj/banking-intent-router, first
+  commit pushed (author "osman", GitHub noreply email). **Next:** README serving section,
+  then Azure deploy once the Student Pack is approved; make the repo public at the end.
 
 ## Part 3 findings (LLM)
 
