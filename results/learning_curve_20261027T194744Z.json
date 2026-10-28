@@ -1,0 +1,299 @@
+{
+  "run": "learning_curve",
+  "timestamp_utc": "20261027T194744Z",
+  "split": "test",
+  "sizes_per_intent": [
+    5,
+    10,
+    25,
+    50
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "settings": {
+    "baseline": "words+chars, C=10, balanced",
+    "distilbert": {
+      "lr": 0.0002,
+      "batch_size": 32,
+      "target_steps": 1410,
+      "max_epochs": 30,
+      "patience": 3
+    }
+  },
+  "versions": {
+    "python": "3.13.0",
+    "torch": "2.14.1",
+    "transformers": "5.21.0",
+    "mlflow": "3.17.2",
+    "machine": "Darwin arm64"
+  },
+  "results": [
+    {
+      "model": "baseline",
+      "per_intent": 5,
+      "train_messages": 385,
+      "seed": 42,
+      "accuracy": 0.6454545454545455,
+      "macro_f1": 0.6450071748399188,
+      "fit_seconds": 0.49704812499840045
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 5,
+      "train_messages": 385,
+      "seed": 42,
+      "accuracy": 0.6857142857142857,
+      "macro_f1": 0.6820433391171924,
+      "best_epoch": 10,
+      "epochs_run": 13,
+      "max_epochs": 30,
+      "best_val_accuracy": 0.6663336663336663,
+      "fit_seconds": 87.29626820800331
+    },
+    {
+      "model": "baseline",
+      "per_intent": 10,
+      "train_messages": 770,
+      "seed": 42,
+      "accuracy": 0.7464285714285714,
+      "macro_f1": 0.7460728561571867,
+      "fit_seconds": 0.6453651249976247
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 10,
+      "train_messages": 770,
+      "seed": 42,
+      "accuracy": 0.8061688311688312,
+      "macro_f1": 0.8063225006426716,
+      "best_epoch": 12,
+      "epochs_run": 15,
+      "max_epochs": 30,
+      "best_val_accuracy": 0.7812187812187812,
+      "fit_seconds": 150.93546666700422
+    },
+    {
+      "model": "baseline",
+      "per_intent": 25,
+      "train_messages": 1925,
+      "seed": 42,
+      "accuracy": 0.8321428571428572,
+      "macro_f1": 0.8321269708743463,
+      "fit_seconds": 1.5130032910019509
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 25,
+      "train_messages": 1925,
+      "seed": 42,
+      "accuracy": 0.8694805194805195,
+      "macro_f1": 0.869866650395125,
+      "best_epoch": 8,
+      "epochs_run": 11,
+      "max_epochs": 24,
+      "best_val_accuracy": 0.8691308691308691,
+      "fit_seconds": 242.1748843749956
+    },
+    {
+      "model": "baseline",
+      "per_intent": 50,
+      "train_messages": 3819,
+      "seed": 42,
+      "accuracy": 0.8746753246753247,
+      "macro_f1": 0.8748886879651736,
+      "fit_seconds": 3.426515458006179
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 50,
+      "train_messages": 3819,
+      "seed": 42,
+      "accuracy": 0.8974025974025974,
+      "macro_f1": 0.8977399191179,
+      "best_epoch": 7,
+      "epochs_run": 10,
+      "max_epochs": 12,
+      "best_val_accuracy": 0.8941058941058941,
+      "fit_seconds": 431.3313813749992
+    },
+    {
+      "model": "baseline",
+      "per_intent": 5,
+      "train_messages": 385,
+      "seed": 43,
+      "accuracy": 0.6318181818181818,
+      "macro_f1": 0.6292064747279661,
+      "fit_seconds": 0.4490431250014808
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 5,
+      "train_messages": 385,
+      "seed": 43,
+      "accuracy": 0.012987012987012988,
+      "macro_f1": 0.000333000333000333,
+      "best_epoch": 1,
+      "epochs_run": 4,
+      "max_epochs": 30,
+      "best_val_accuracy": 0.016983016983016984,
+      "fit_seconds": 32.300759750003635
+    },
+    {
+      "model": "baseline",
+      "per_intent": 10,
+      "train_messages": 770,
+      "seed": 43,
+      "accuracy": 0.7334415584415584,
+      "macro_f1": 0.7305645918460271,
+      "fit_seconds": 0.8475997920031659
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 10,
+      "train_messages": 770,
+      "seed": 43,
+      "accuracy": 0.7967532467532468,
+      "macro_f1": 0.7965817351707718,
+      "best_epoch": 18,
+      "epochs_run": 21,
+      "max_epochs": 30,
+      "best_val_accuracy": 0.7862137862137862,
+      "fit_seconds": 284.6100223329995
+    },
+    {
+      "model": "baseline",
+      "per_intent": 25,
+      "train_messages": 1925,
+      "seed": 43,
+      "accuracy": 0.8405844155844155,
+      "macro_f1": 0.8396525661884485,
+      "fit_seconds": 1.8761784580055973
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 25,
+      "train_messages": 1925,
+      "seed": 43,
+      "accuracy": 0.8737012987012988,
+      "macro_f1": 0.8734092591625707,
+      "best_epoch": 10,
+      "epochs_run": 13,
+      "max_epochs": 24,
+      "best_val_accuracy": 0.8611388611388612,
+      "fit_seconds": 336.36208345800696
+    },
+    {
+      "model": "baseline",
+      "per_intent": 50,
+      "train_messages": 3819,
+      "seed": 43,
+      "accuracy": 0.8814935064935064,
+      "macro_f1": 0.8816665965899668,
+      "fit_seconds": 3.16783554200083
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 50,
+      "train_messages": 3819,
+      "seed": 43,
+      "accuracy": 0.9051948051948052,
+      "macro_f1": 0.9048233559207025,
+      "best_epoch": 11,
+      "epochs_run": 12,
+      "max_epochs": 12,
+      "best_val_accuracy": 0.9010989010989011,
+      "fit_seconds": 617.6103833340021
+    },
+    {
+      "model": "baseline",
+      "per_intent": 5,
+      "train_messages": 385,
+      "seed": 44,
+      "accuracy": 0.6493506493506493,
+      "macro_f1": 0.6479161208457498,
+      "fit_seconds": 0.4818769169942243
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 5,
+      "train_messages": 385,
+      "seed": 44,
+      "accuracy": 0.6772727272727272,
+      "macro_f1": 0.670903982580496,
+      "best_epoch": 13,
+      "epochs_run": 16,
+      "max_epochs": 30,
+      "best_val_accuracy": 0.6743256743256744,
+      "fit_seconds": 147.8680689160028
+    },
+    {
+      "model": "baseline",
+      "per_intent": 10,
+      "train_messages": 770,
+      "seed": 44,
+      "accuracy": 0.7396103896103896,
+      "macro_f1": 0.7380052229790497,
+      "fit_seconds": 0.9504732920031529
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 10,
+      "train_messages": 770,
+      "seed": 44,
+      "accuracy": 0.7961038961038961,
+      "macro_f1": 0.7960660435404932,
+      "best_epoch": 13,
+      "epochs_run": 16,
+      "max_epochs": 30,
+      "best_val_accuracy": 0.8001998001998002,
+      "fit_seconds": 201.27466770900355
+    },
+    {
+      "model": "baseline",
+      "per_intent": 25,
+      "train_messages": 1925,
+      "seed": 44,
+      "accuracy": 0.8344155844155844,
+      "macro_f1": 0.8332594624151225,
+      "fit_seconds": 2.541384084004676
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 25,
+      "train_messages": 1925,
+      "seed": 44,
+      "accuracy": 0.8613636363636363,
+      "macro_f1": 0.8616744910378419,
+      "best_epoch": 6,
+      "epochs_run": 9,
+      "max_epochs": 24,
+      "best_val_accuracy": 0.8601398601398601,
+      "fit_seconds": 245.2710713330016
+    },
+    {
+      "model": "baseline",
+      "per_intent": 50,
+      "train_messages": 3819,
+      "seed": 44,
+      "accuracy": 0.8883116883116883,
+      "macro_f1": 0.8880860425217779,
+      "fit_seconds": 3.2809585419963696
+    },
+    {
+      "model": "distilbert",
+      "per_intent": 50,
+      "train_messages": 3819,
+      "seed": 44,
+      "accuracy": 0.8918831168831168,
+      "macro_f1": 0.892221083388707,
+      "best_epoch": 5,
+      "epochs_run": 8,
+      "max_epochs": 12,
+      "best_val_accuracy": 0.8961038961038961,
+      "fit_seconds": 396.00905129199964
+    }
+  ]
+}

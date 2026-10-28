@@ -1,0 +1,71 @@
+{
+  "run": "finetune_lr0.0002_bs32_cw-none_seed42",
+  "timestamp_utc": "20261027T161844Z",
+  "split": "val",
+  "params": {
+    "base_model": "distilbert-base-uncased",
+    "lr": 0.0002,
+    "epochs": 5,
+    "batch_size": 32,
+    "seed": 42,
+    "class_weight": "none",
+    "max_length": 128,
+    "device": "mps"
+  },
+  "versions": {
+    "python": "3.13.0",
+    "torch": "2.14.1",
+    "transformers": "5.21.0",
+    "mlflow": "3.17.2",
+    "machine": "Darwin arm64"
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 1.5555966791848765,
+      "train_accuracy": 0.8882470562097312,
+      "val_loss": 0.5432757139205933,
+      "val_accuracy": 0.8571428571428571,
+      "val_macro_f1": 0.857076491639229,
+      "train_seconds": 98.41365820899955
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.35000850577303705,
+      "train_accuracy": 0.9491224172406132,
+      "val_loss": 0.43577924370765686,
+      "val_accuracy": 0.8761238761238761,
+      "val_macro_f1": 0.8799845893272563,
+      "train_seconds": 96.90092241699313
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.17188990142539884,
+      "train_accuracy": 0.9817818262608309,
+      "val_loss": 0.33135804533958435,
+      "val_accuracy": 0.9100899100899101,
+      "val_macro_f1": 0.9124719971686598,
+      "train_seconds": 116.06427862500277
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.07076820014507001,
+      "train_accuracy": 0.9948900244390135,
+      "val_loss": 0.3308091461658478,
+      "val_accuracy": 0.9230769230769231,
+      "val_macro_f1": 0.9257592608953973,
+      "train_seconds": 114.04392891599855
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.03315875691969397,
+      "train_accuracy": 0.9982226171961787,
+      "val_loss": 0.3264082968235016,
+      "val_accuracy": 0.922077922077922,
+      "val_macro_f1": 0.9252255435642508,
+      "train_seconds": 107.94811216599919
+    }
+  ],
+  "best_epoch": 4,
+  "model_dir": "models/finetune_lr0.0002_bs32_cw-none_seed42_20261027T161844Z"
+}

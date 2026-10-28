@@ -1,0 +1,211 @@
+{
+  "run": "routing_val",
+  "timestamp_utc": "20261028T095719Z",
+  "split": "val",
+  "versions": {
+    "python": "3.13.0",
+    "scikit-learn": "1.9.1",
+    "torch": "2.14.1",
+    "transformers": "5.21.0",
+    "numpy": "2.5.4",
+    "machine": "Darwin arm64"
+  },
+  "targets": [
+    0.95,
+    0.97,
+    0.99
+  ],
+  "baseline_setting": {
+    "features": "words+chars",
+    "C": 10,
+    "class_weight": "balanced"
+  },
+  "distilbert_dirs": {
+    "42": "models/finetune_lr0.0002_bs32_cw-none_seed42_20261027T161844Z",
+    "43": "models/finetune_lr0.0002_bs32_cw-none_seed43_20261027T170035Z",
+    "44": "models/finetune_lr0.0002_bs32_cw-none_seed44_20261027T171332Z"
+  },
+  "main_seed": 44,
+  "results": [
+    {
+      "model": "TF-IDF + LR",
+      "method": "confidence",
+      "target": 0.95,
+      "threshold": 0.5463462065572755,
+      "val_accuracy_all": 0.9050949050949051,
+      "val_coverage": 0.8831168831168831,
+      "val_precision": 0.9502262443438914,
+      "val_n_auto": 884,
+      "val_n_wrong_auto": 44,
+      "val_n_to_human": 117
+    },
+    {
+      "model": "TF-IDF + LR",
+      "method": "confidence",
+      "target": 0.97,
+      "threshold": 0.6879973456376464,
+      "val_accuracy_all": 0.9050949050949051,
+      "val_coverage": 0.8001998001998002,
+      "val_precision": 0.9700374531835206,
+      "val_n_auto": 801,
+      "val_n_wrong_auto": 24,
+      "val_n_to_human": 200
+    },
+    {
+      "model": "TF-IDF + LR",
+      "method": "confidence",
+      "target": 0.99,
+      "threshold": 0.9011750852902383,
+      "val_accuracy_all": 0.9050949050949051,
+      "val_coverage": 0.5734265734265734,
+      "val_precision": 0.9912891986062717,
+      "val_n_auto": 574,
+      "val_n_wrong_auto": 5,
+      "val_n_to_human": 427
+    },
+    {
+      "model": "TF-IDF + LR",
+      "method": "margin",
+      "target": 0.95,
+      "threshold": 0.26489063042615174,
+      "val_accuracy_all": 0.9050949050949051,
+      "val_coverage": 0.9050949050949051,
+      "val_precision": 0.9503311258278145,
+      "val_n_auto": 906,
+      "val_n_wrong_auto": 45,
+      "val_n_to_human": 95
+    },
+    {
+      "model": "TF-IDF + LR",
+      "method": "margin",
+      "target": 0.97,
+      "threshold": 0.5749297685497262,
+      "val_accuracy_all": 0.9050949050949051,
+      "val_coverage": 0.7952047952047953,
+      "val_precision": 0.9711055276381909,
+      "val_n_auto": 796,
+      "val_n_wrong_auto": 23,
+      "val_n_to_human": 205
+    },
+    {
+      "model": "TF-IDF + LR",
+      "method": "margin",
+      "target": 0.99,
+      "threshold": 0.8167828539156389,
+      "val_accuracy_all": 0.9050949050949051,
+      "val_coverage": 0.6433566433566433,
+      "val_precision": 0.9906832298136646,
+      "val_n_auto": 644,
+      "val_n_wrong_auto": 6,
+      "val_n_to_human": 357
+    },
+    {
+      "model": "DistilBERT",
+      "method": "confidence",
+      "target": 0.95,
+      "threshold": 0.7137802839279175,
+      "val_accuracy_all": 0.9270729270729271,
+      "val_coverage": 0.948051948051948,
+      "val_precision": 0.9504741833508957,
+      "val_n_auto": 949,
+      "val_n_wrong_auto": 47,
+      "val_n_to_human": 52
+    },
+    {
+      "model": "DistilBERT",
+      "method": "confidence",
+      "target": 0.97,
+      "threshold": 0.8629079461097717,
+      "val_accuracy_all": 0.9270729270729271,
+      "val_coverage": 0.9010989010989011,
+      "val_precision": 0.9700665188470067,
+      "val_n_auto": 902,
+      "val_n_wrong_auto": 27,
+      "val_n_to_human": 99
+    },
+    {
+      "model": "DistilBERT",
+      "method": "confidence",
+      "target": 0.99,
+      "threshold": 0.9699269533157349,
+      "val_accuracy_all": 0.9270729270729271,
+      "val_coverage": 0.7942057942057942,
+      "val_precision": 0.9911949685534591,
+      "val_n_auto": 795,
+      "val_n_wrong_auto": 7,
+      "val_n_to_human": 206
+    },
+    {
+      "model": "DistilBERT",
+      "method": "margin",
+      "target": 0.95,
+      "threshold": 0.5413676500320435,
+      "val_accuracy_all": 0.9270729270729271,
+      "val_coverage": 0.945054945054945,
+      "val_precision": 0.9503171247357294,
+      "val_n_auto": 946,
+      "val_n_wrong_auto": 47,
+      "val_n_to_human": 55
+    },
+    {
+      "model": "DistilBERT",
+      "method": "margin",
+      "target": 0.97,
+      "threshold": 0.7704629898071289,
+      "val_accuracy_all": 0.9270729270729271,
+      "val_coverage": 0.903096903096903,
+      "val_precision": 0.9701327433628318,
+      "val_n_auto": 904,
+      "val_n_wrong_auto": 27,
+      "val_n_to_human": 97
+    },
+    {
+      "model": "DistilBERT",
+      "method": "margin",
+      "target": 0.99,
+      "threshold": 0.9507541656494141,
+      "val_accuracy_all": 0.9270729270729271,
+      "val_coverage": 0.7992007992007992,
+      "val_precision": 0.99,
+      "val_n_auto": 800,
+      "val_n_wrong_auto": 8,
+      "val_n_to_human": 201
+    },
+    {
+      "model": "DistilBERT 3-seed ensemble",
+      "method": "confidence",
+      "target": 0.95,
+      "threshold": 0.5127313733100891,
+      "val_accuracy_all": 0.935064935064935,
+      "val_coverage": 0.97002997002997,
+      "val_precision": 0.9505664263645726,
+      "val_n_auto": 971,
+      "val_n_wrong_auto": 48,
+      "val_n_to_human": 30
+    },
+    {
+      "model": "DistilBERT 3-seed ensemble",
+      "method": "confidence",
+      "target": 0.97,
+      "threshold": 0.7278950810432434,
+      "val_accuracy_all": 0.935064935064935,
+      "val_coverage": 0.913086913086913,
+      "val_precision": 0.9704595185995624,
+      "val_n_auto": 914,
+      "val_n_wrong_auto": 27,
+      "val_n_to_human": 87
+    },
+    {
+      "model": "DistilBERT 3-seed ensemble",
+      "method": "confidence",
+      "target": 0.99,
+      "threshold": 0.9350593090057373,
+      "val_accuracy_all": 0.935064935064935,
+      "val_coverage": 0.8371628371628371,
+      "val_precision": 0.9904534606205251,
+      "val_n_auto": 838,
+      "val_n_wrong_auto": 8,
+      "val_n_to_human": 163
+    }
+  ]
+}

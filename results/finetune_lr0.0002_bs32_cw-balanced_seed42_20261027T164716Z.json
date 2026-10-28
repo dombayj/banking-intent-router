@@ -1,0 +1,71 @@
+{
+  "run": "finetune_lr0.0002_bs32_cw-balanced_seed42",
+  "timestamp_utc": "20261027T164716Z",
+  "split": "val",
+  "params": {
+    "base_model": "distilbert-base-uncased",
+    "lr": 0.0002,
+    "epochs": 5,
+    "batch_size": 32,
+    "seed": 42,
+    "class_weight": "balanced",
+    "max_length": 128,
+    "device": "mps"
+  },
+  "versions": {
+    "python": "3.13.0",
+    "torch": "2.14.1",
+    "transformers": "5.21.0",
+    "mlflow": "3.17.2",
+    "machine": "Darwin arm64"
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 1.5969133075353101,
+      "train_accuracy": 0.8940235503221506,
+      "val_loss": 0.5178734660148621,
+      "val_accuracy": 0.8521478521478522,
+      "val_macro_f1": 0.8510712857380027,
+      "train_seconds": 90.29642041700572
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3705023404818477,
+      "train_accuracy": 0.9485669851144191,
+      "val_loss": 0.4201759099960327,
+      "val_accuracy": 0.8751248751248751,
+      "val_macro_f1": 0.8757997490104691,
+      "train_seconds": 105.05039262499486
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.18022103099720488,
+      "train_accuracy": 0.97900466562986,
+      "val_loss": 0.3180416524410248,
+      "val_accuracy": 0.9150849150849151,
+      "val_macro_f1": 0.9151330302643347,
+      "train_seconds": 110.1442969589989
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.08040856673045362,
+      "train_accuracy": 0.9942235058875806,
+      "val_loss": 0.3291776776313782,
+      "val_accuracy": 0.9170829170829171,
+      "val_macro_f1": 0.9206367489142848,
+      "train_seconds": 108.24148758299998
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.03612396687909908,
+      "train_accuracy": 0.9975560986447456,
+      "val_loss": 0.317449688911438,
+      "val_accuracy": 0.9200799200799201,
+      "val_macro_f1": 0.9236595937180979,
+      "train_seconds": 102.73063141699822
+    }
+  ],
+  "best_epoch": 5,
+  "model_dir": "models/finetune_lr0.0002_bs32_cw-balanced_seed42_20261027T164716Z"
+}

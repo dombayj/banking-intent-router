@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banking Intent Router</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #1b1f24; --muted: #5d6673; --line: #dfe3e8;
+    --accent: #2457c5; --accent-text: #ffffff; --bar: #c9d6f2;
+    --auto-bg: #e3f4e8; --auto-text: #1b6b35; --human-bg: #fdf0dc; --human-text: #8a5300;
+    --error: #b42318;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111418; --card: #1a1e24; --text: #e8eaed; --muted: #9aa3ae; --line: #2c323a;
+      --accent: #6b93ec; --accent-text: #0d1117; --bar: #2f4a80;
+      --auto-bg: #173523; --auto-text: #7ed69a; --human-bg: #3a2a10; --human-text: #f2bd6b;
+      --error: #ff8a80;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 40px 16px 56px; }
+  h1 { font-size: 1.6rem; margin: 0 0 6px; }
+  .lead { color: var(--muted); margin: 0 0 24px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px; margin-bottom: 16px;
+  }
+  textarea {
+    width: 100%; min-height: 90px; resize: vertical; padding: 12px; font: inherit;
+    color: var(--text); background: var(--bg); border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+         margin-top: 12px; }
+  button.primary {
+    background: var(--accent); color: var(--accent-text); border: 0; border-radius: 8px;
+    padding: 10px 20px; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  button.primary:disabled { opacity: 0.6; cursor: wait; }
+  .examples-label { color: var(--muted); font-size: 0.85rem; margin: 18px 0 8px; }
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; }
+  .examples button {
+    background: transparent; color: var(--text); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.85rem;
+    cursor: pointer; text-align: left;
+  }
+  .examples button:hover { border-color: var(--accent); }
+  .counter { color: var(--muted); font-size: 0.8rem; }
+  #result[hidden] { display: none; }
+  .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase;
+           letter-spacing: 0.04em; margin-bottom: 4px; }
+  .intent-row { display: flex; justify-content: space-between; align-items: baseline;
+                gap: 12px; flex-wrap: wrap; }
+  .intent { font-size: 1.4rem; font-weight: 650; }
+  .confidence { font-size: 1.4rem; font-variant-numeric: tabular-nums; }
+  .badge { display: inline-block; border-radius: 8px; padding: 8px 12px; margin: 14px 0 18px;
+           font-weight: 600; }
+  .badge.auto { background: var(--auto-bg); color: var(--auto-text); }
+  .badge.human { background: var(--human-bg); color: var(--human-text); }
+  .bars { display: grid; gap: 8px; }
+  .bar-row { display: grid; grid-template-columns: 1fr 52px; gap: 10px; align-items: center;
+             font-size: 0.9rem; }
+  .bar-track { position: relative; background: var(--bg); border-radius: 6px; overflow: hidden;
+               padding: 4px 8px; }
+  .bar-fill { position: absolute; inset: 0 auto 0 0; background: var(--bar); }
+  .bar-name { position: relative; }
+  .bar-pct { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .meta { color: var(--muted); font-size: 0.8rem; margin-top: 14px; }
+  .error { color: var(--error); margin-top: 10px; }
+  footer { color: var(--muted); font-size: 0.85rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Banking Support Intent Router</h1>
+  <p class="lead">Type a message a bank customer might send. The model picks one of 77
+    support intents and decides whether it is safe to handle automatically or should go
+    to a human agent. It routes messages; it does not reply to them.</p>
+
+  <section class="card">
+    <form id="form">
+      <textarea id="text" maxlength="500" placeholder="e.g. I still haven't received my new card"
+                aria-label="Customer message" required></textarea>
+      <div class="row">
+        <span class="counter" id="counter">0 / 500</span>
+        <button class="primary" id="submit" type="submit">Classify</button>
+      </div>
+    </form>
+    <div class="examples-label">Or try an example:</div>
+    <div class="examples" id="examples"></div>
+    <div class="error" id="error" role="alert"></div>
+  </section>
+
+  <section class="card" id="result" hidden aria-live="polite">
+    <div class="label">Intent</div>
+    <div class="intent-row">
+      <span class="intent" id="intent"></span>
+      <span class="confidence" id="confidence"></span>
+    </div>
+    <div class="badge" id="badge"></div>
+    <div class="label">Top 3</div>
+    <div class="bars" id="bars"></div>
+    <div class="meta" id="meta"></div>
+  </section>
+
+  <footer>
+    DistilBERT fine-tuned on BANKING77. Threshold chosen on validation for 97% precision;
+    on the test set it handled 88.7% of messages automatically. Nothing you type is stored.
+    <a href="https://github.com/dombayj/banking-intent-router">Code and results on GitHub</a>
+    · <a href="/docs">API docs</a>
+  </footer>
+</main>
+
+<script>
+  const EXAMPLES = [
+    "I still haven't received my new card, when will it arrive?",
+    "My money hasn't shown up yet",
+    "Why was I charged an extra fee when I took cash out abroad?",
+    "Can I change my PIN at an ATM?",
+    "What's the weather like in London tomorrow?",
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const pretty = (intent) => {
+    const s = intent.replaceAll("_", " ");
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+  const pct = (p) => (p < 0.005 ? "<1%" : `${Math.round(p * 100)}%`);
+
+  for (const text of EXAMPLES) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = text;
+    b.addEventListener("click", () => { $("text").value = text; updateCounter(); classify(); });
+    $("examples").append(b);
+  }
+
+  function updateCounter() { $("counter").textContent = `${$("text").value.length} / 500`; }
+  $("text").addEventListener("input", updateCounter);
+
+  async function classify() {
+    const text = $("text").value.trim();
+    if (!text) return;
+    $("submit").disabled = true;
+    $("error").textContent = "";
+    try {
+      const res = await fetch("/classify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+      if (!res.ok) throw new Error(`Server answered ${res.status}`);
+      show(await res.json());
+    } catch (err) {
+      $("error").textContent = `Could not classify the message (${err.message}). Please try again.`;
+    } finally {
+      $("submit").disabled = false;
+    }
+  }
+
+  function show(r) {
+    $("intent").textContent = pretty(r.intent);
+    $("confidence").textContent = pct(r.confidence);
+    const badge = $("badge");
+    badge.className = `badge ${r.route}`;
+    badge.textContent = r.route === "auto"
+      ? "✅ Handled automatically"
+      : `👤 Sent to a human agent (confidence below ${Math.round(r.threshold * 100)}%)`;
+    const rows = [{ intent: r.intent, confidence: r.confidence }, ...r.alternatives];
+    $("bars").replaceChildren(...rows.map(({ intent, confidence }) => {
+      const row = document.createElement("div");
+      row.className = "bar-row";
+      row.innerHTML = `<div class="bar-track"><div class="bar-fill"></div>
+        <span class="bar-name"></span></div><span class="bar-pct"></span>`;
+      row.querySelector(".bar-fill").style.width = `${confidence * 100}%`;
+      row.querySelector(".bar-name").textContent = pretty(intent);
+      row.querySelector(".bar-pct").textContent = pct(confidence);
+      return row;
+    }));
+    $("meta").textContent = `Model time: ${r.latency_ms.toFixed(0)} ms`;
+    $("result").hidden = false;
+  }
+
+  $("form").addEventListener("submit", (e) => { e.preventDefault(); classify(); });
+</script>
+</body>
+</html>

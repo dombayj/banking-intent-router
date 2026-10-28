@@ -1,0 +1,71 @@
+{
+  "run": "finetune_lr0.0002_bs32_cw-none_seed44",
+  "timestamp_utc": "20261027T171332Z",
+  "split": "val",
+  "params": {
+    "base_model": "distilbert-base-uncased",
+    "lr": 0.0002,
+    "epochs": 5,
+    "batch_size": 32,
+    "seed": 44,
+    "class_weight": "none",
+    "max_length": 128,
+    "device": "mps"
+  },
+  "versions": {
+    "python": "3.13.0",
+    "torch": "2.14.1",
+    "transformers": "5.21.0",
+    "mlflow": "3.17.2",
+    "machine": "Darwin arm64"
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 1.7449297279330855,
+      "train_accuracy": 0.8794712286158631,
+      "val_loss": 0.5224119424819946,
+      "val_accuracy": 0.8491508491508492,
+      "val_macro_f1": 0.839718227128575,
+      "train_seconds": 96.598353166999
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.4051727215818902,
+      "train_accuracy": 0.9491224172406132,
+      "val_loss": 0.3736046552658081,
+      "val_accuracy": 0.9090909090909091,
+      "val_macro_f1": 0.9129792555241316,
+      "train_seconds": 94.53109187500377
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.19044466822652528,
+      "train_accuracy": 0.978338147078427,
+      "val_loss": 0.3224681317806244,
+      "val_accuracy": 0.9110889110889111,
+      "val_macro_f1": 0.9145959020918945,
+      "train_seconds": 110.80584791600268
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.08046344950372446,
+      "train_accuracy": 0.9941124194623417,
+      "val_loss": 0.30646881461143494,
+      "val_accuracy": 0.9270729270729271,
+      "val_macro_f1": 0.9306384775472575,
+      "train_seconds": 92.28261195900268
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.03697105266933217,
+      "train_accuracy": 0.9976671850699844,
+      "val_loss": 0.3140621483325958,
+      "val_accuracy": 0.9230769230769231,
+      "val_macro_f1": 0.9269881259866624,
+      "train_seconds": 95.66662487500435
+    }
+  ],
+  "best_epoch": 4,
+  "model_dir": "models/finetune_lr0.0002_bs32_cw-none_seed44_20261027T171332Z"
+}

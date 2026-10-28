@@ -1,0 +1,20 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Data, models, tracking, caches: download or rebuild locally (see README)
+data/
+models/
+checkpoints/
+mlruns/
+mlartifacts/
+cache/
+
+# Python / OS junk
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store

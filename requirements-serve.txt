@@ -1,0 +1,5 @@
+# Only what the /classify server needs (the Docker image installs these).
+# torch is installed separately from PyTorch's CPU-only index (see Dockerfile).
+fastapi==0.162.0
+uvicorn==0.54.0
+transformers==5.21.0

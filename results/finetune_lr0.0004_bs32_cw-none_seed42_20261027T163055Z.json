@@ -1,0 +1,71 @@
+{
+  "run": "finetune_lr0.0004_bs32_cw-none_seed42",
+  "timestamp_utc": "20261027T163055Z",
+  "split": "val",
+  "params": {
+    "base_model": "distilbert-base-uncased",
+    "lr": 0.0004,
+    "epochs": 5,
+    "batch_size": 32,
+    "seed": 42,
+    "class_weight": "none",
+    "max_length": 128,
+    "device": "mps"
+  },
+  "versions": {
+    "python": "3.13.0",
+    "torch": "2.14.1",
+    "transformers": "5.21.0",
+    "mlflow": "3.17.2",
+    "machine": "Darwin arm64"
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 2.162516386796397,
+      "train_accuracy": 0.6821817373916907,
+      "val_loss": 1.129815697669983,
+      "val_accuracy": 0.6523476523476524,
+      "val_macro_f1": 0.5888679510507605,
+      "train_seconds": 97.0236863329992
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.8787648917724055,
+      "train_accuracy": 0.8237058431459675,
+      "val_loss": 0.7045604586601257,
+      "val_accuracy": 0.7982017982017982,
+      "val_macro_f1": 0.7769666078854257,
+      "train_seconds": 100.32467008299864
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.4989009365333733,
+      "train_accuracy": 0.9121306376360808,
+      "val_loss": 0.4912554621696472,
+      "val_accuracy": 0.8671328671328671,
+      "val_macro_f1": 0.8610701152447283,
+      "train_seconds": 104.07769295899925
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.2975322989258149,
+      "train_accuracy": 0.9523439235725394,
+      "val_loss": 0.45109492540359497,
+      "val_accuracy": 0.8831168831168831,
+      "val_macro_f1": 0.8806624188953073,
+      "train_seconds": 105.49868866599718
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.16403274464665363,
+      "train_accuracy": 0.9716729615640969,
+      "val_loss": 0.4042855203151703,
+      "val_accuracy": 0.9000999000999002,
+      "val_macro_f1": 0.9005750442872393,
+      "train_seconds": 116.57210816699808
+    }
+  ],
+  "best_epoch": 5,
+  "model_dir": "models/finetune_lr0.0004_bs32_cw-none_seed42_20261027T163055Z"
+}

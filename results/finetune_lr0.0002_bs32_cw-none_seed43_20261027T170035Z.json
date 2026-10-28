@@ -1,0 +1,71 @@
+{
+  "run": "finetune_lr0.0002_bs32_cw-none_seed43",
+  "timestamp_utc": "20261027T170035Z",
+  "split": "val",
+  "params": {
+    "base_model": "distilbert-base-uncased",
+    "lr": 0.0002,
+    "epochs": 5,
+    "batch_size": 32,
+    "seed": 43,
+    "class_weight": "none",
+    "max_length": 128,
+    "device": "mps"
+  },
+  "versions": {
+    "python": "3.13.0",
+    "torch": "2.14.1",
+    "transformers": "5.21.0",
+    "mlflow": "3.17.2",
+    "machine": "Darwin arm64"
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 1.5895607883625842,
+      "train_accuracy": 0.8736947345034437,
+      "val_loss": 0.5456661581993103,
+      "val_accuracy": 0.8431568431568431,
+      "val_macro_f1": 0.8311787156640398,
+      "train_seconds": 87.61839729100029
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3734406238646372,
+      "train_accuracy": 0.9611197511664075,
+      "val_loss": 0.35396942496299744,
+      "val_accuracy": 0.913086913086913,
+      "val_macro_f1": 0.9163029972103187,
+      "train_seconds": 88.66433508400223
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.16524037147429607,
+      "train_accuracy": 0.9835592090646523,
+      "val_loss": 0.362967848777771,
+      "val_accuracy": 0.9080919080919081,
+      "val_macro_f1": 0.913156021896278,
+      "train_seconds": 125.84290983399842
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.07795631981302872,
+      "train_accuracy": 0.9948900244390135,
+      "val_loss": 0.33353540301322937,
+      "val_accuracy": 0.919080919080919,
+      "val_macro_f1": 0.9254925205373351,
+      "train_seconds": 122.14345804199547
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.03388349681841672,
+      "train_accuracy": 0.9972228393690291,
+      "val_loss": 0.31836482882499695,
+      "val_accuracy": 0.9230769230769231,
+      "val_macro_f1": 0.9283389531706288,
+      "train_seconds": 117.12020008300169
+    }
+  ],
+  "best_epoch": 5,
+  "model_dir": "models/finetune_lr0.0002_bs32_cw-none_seed43_20261027T170035Z"
+}

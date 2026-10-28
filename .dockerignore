@@ -1,0 +1,6 @@
+# Only app/, requirements-serve.txt and the one model folder go into the image.
+*
+!app/
+!requirements-serve.txt
+!models/finetune_lr0.0002_bs32_cw-none_seed44_20261027T171332Z/
+**/__pycache__
