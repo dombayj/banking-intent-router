@@ -91,6 +91,12 @@ Decisions are made by Osman; each one records the reason. Experiment results go 
 - **2026-10-28 (GitHub):** private repo github.com/dombayj/banking-intent-router, first
   commit pushed (author "osman", GitHub noreply email). **Next:** README serving section,
   then Azure deploy once the Student Pack is approved; make the repo public at the end.
+- **2026-10-29:** Student Pack not approved yet. App name decided: `banking-intent-router`
+  (exact Azure URL only known at creation, so no link in README/CV until live). README
+  serving section written (run commands, example request/response, measured numbers,
+  "live demo: coming soon"). Osman chose **Azure Container Apps, scale to zero**: about
+  free within the monthly free grant; first visit after idle waits for a cold start.
+  Prep before approval: amd64 image, deploy script, Azure CLI installed.
 
 ## Part 3 findings (LLM)
 
@@ -188,6 +194,7 @@ both models.
 | 2026-10-28 | 6 | Build and test locally in Docker first, then deploy to Azure via Azure for Students ($100, no card, through the GitHub Student Pack) | Live link for the CV at no cost. HF Spaces (Docker) now seems to need a paid plan for new accounts; Render free (512 MB) is too small for DistilBERT + PyTorch. Fallback if Azure fails: ONNX + 8-bit model on Render |
 | 2026-10-28 | 6 | Repo private until the README is final; API returns intent, confidence, route, 2 runner-ups; demo page with 5 example buttons, no caching, nothing stored | Osman's choices; runner-ups help the human agent and show the model's doubt |
 | 2026-10-28 | 6 | Demo examples, option A: keep "cash out abroad" (confident mistake, 91%, auto) and replace the top-up example with "My money hasn't shown up yet" (56%, human) | Shows both a real error that passes routing and a real banking message routed to a human; no showroom |
+| 2026-10-29 | 6 | Azure Container Apps, scales to zero when idle (option A); app name `banking-intent-router`; no URL in README/CV until live | Costs ~nothing inside the monthly free grant, keeps the $100 credit. Trade-off: first visit after idle waits for a cold start. App Service (always on, ~$13/month) rejected |
 | 2026-10-27 | 2 | No class weights first; then one run with weights on | One change per experiment; comparable with the baseline |
 | 2026-10-21 | 4 | Do the learning-curve experiment (5/10/25/50 examples per intent) | Answers *when* fine-tuning beats the LLM; Osman wants to learn as much as possible |
 

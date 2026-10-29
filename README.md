@@ -236,6 +236,55 @@ verify_my_identity, both models say why_verify_identity), which caps any model b
   top intent is clearly ahead, its probability is already high, so both scores sort
   messages almost the same way.
 
+## Serving
+
+The fine-tuned DistilBERT (seed 44) runs as a FastAPI app with confidence routing built
+in. Messages below the threshold chosen on validation (0.86, for 97% precision) come back
+with `"route": "human"`.
+
+**Live demo:** coming soon (Azure).
+
+Run it locally in Docker (the model folder is not in git, so train it first; see
+Reproduce):
+
+```bash
+docker build -t banking-intent-router .
+docker run --rm -p 8000:8000 banking-intent-router
+```
+
+Open http://localhost:8000 for the demo page, or http://localhost:8000/docs for the
+API docs. Example:
+
+```bash
+curl -X POST localhost:8000/classify -H "Content-Type: application/json" \
+     -d '{"text": "I still haven'\''t received my new card"}'
+```
+
+```json
+{
+  "intent": "card_arrival",
+  "confidence": 0.993,
+  "route": "auto",
+  "threshold": 0.863,
+  "alternatives": [
+    {"intent": "card_delivery_estimate", "confidence": 0.001},
+    {"intent": "transfer_not_received_by_recipient", "confidence": 0.001}
+  ],
+  "latency_ms": 22.4
+}
+```
+
+A vague message like "is it ok" gets 0.41 confidence and `"route": "human"`.
+
+| | |
+|---|---|
+| Image size | 2.1 GB (CPU-only PyTorch) |
+| Memory while running | 342 MB |
+| Latency per message | ~23 ms over HTTP, batch 1, Apple M2 CPU |
+| Endpoints | `POST /classify`, `GET /health`, `GET /` (demo page) |
+
+Nothing the user types is stored or logged. Tests: `pytest tests/` (5 tests).
+
 ## Reproduce
 
 ```bash
