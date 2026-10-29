@@ -6,7 +6,16 @@ on accuracy, latency and cost.
 
 ## Problem
 
-_TODO: why intent routing matters for support teams; what a wrong route costs._
+A wrong route is expensive. The customer gets a wrong answer or is passed between teams,
+waits longer, and an agent spends time re-sorting the message. So a router has to be
+accurate, and it also has to know when it's unsure and hand those messages to a person
+instead of guessing.
+
+This project asks a practical question: **should a bank train its own small model, or
+prompt a large LLM API?** It compares a simple baseline (TF-IDF + logistic regression), a
+fine-tuned DistilBERT and `gpt-5.4-mini` (zero-shot and few-shot) on the same 3,080 test
+messages, on accuracy, latency and cost. It then adds confidence routing, so only
+messages the model is sure about are handled automatically.
 
 ## Data
 
